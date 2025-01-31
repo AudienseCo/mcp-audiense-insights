@@ -46,73 +46,119 @@ Before using this server, ensure you have:
      }     
    }
 
-	3.	Save the file and restart Claude Desktop.
+3.	Save the file and restart Claude Desktop.
 
 ## 🛠️ Available Tools
+### 📌 `get-reports`
+**Description**: Retrieves the list of **Audiense insights reports** owned by the authenticated user.
 
-**get-reports**
-- Description: Lists all intelligence reports available for the authenticated user.
-- Parameters: (None)
-- Use case: Start here to discover available audience analyses.
+- **Parameters**: _None_
+- **Response**:
+  - List of reports in JSON format.
 
-**get-report-info**
-- Description: Retrieves detailed information about a specific intelligence report, including its status, segmentation type, audience size, segments, and access links.
-- Required Parameter: report_id (string)
-- Use case: Understand the scope and segmentation of an audience report.
+---
 
-**get-audience-insights**
-- Description: Retrieves aggregated insights for a given audience ID, providing statistical distributions across various attributes:
-    - Demographics: Gender, age, country.
-    - Behavioral Traits: Active hours, platform usage.
-    - Psychographics: Personality traits, interests.
-    - Socioeconomic Factors: Income, education level.
-    - Required Parameter: audience_insights_id (string)
-    - Optional Parameter: insights (array of strings) → Filters insights.
-- Use case: Gain a detailed understanding of audience characteristics.
+### 📌 `get-report-info`
+**Description**: Fetches detailed information about a **specific intelligence report**, including:
+  - Status
+  - Segmentation type
+  - Audience size
+  - Segments
+  - Access links
 
-**compare-audience-influencers**
-- Description: Compares the influencers of an audience with a baseline audience.
-- Baseline Rules:
-    - If the audience is global, the baseline is global.
-    - If a single country represents ≥50%, that country is used as the baseline.
-    - If a segment is selected, the full audience is the baseline.
-- Each comparison includes:
-    - Affinity (%) → How closely the influencer aligns with the audience.
-    - Baseline Affinity (%) → The influencer’s affinity in the baseline.
-    - Uniqueness Score → How distinct the influencer is in this audience vs. the baseline.
-- Required Parameters:
-    - audience_influencers_id (string)
-    - baseline_audience_influencers_id (string)
-- Optional Filters:
-    - cursor (number, pagination)
-    - count (number, default: 200)
-    - bio_keyword (string, filter by biography content)
-    - entity_type (person/brand)
-    - followers_min/max (number)
-    - categories (array of strings)
-    - countries (array of strings)
-- Use case: Compare key influencers against a reference audience.
+- **Parameters**:
+  - `report_id` _(string)_: The ID of the intelligence report.
 
-**get-audience-content**
-- Description: Retrieves content engagement insights for an audience.
-- Categories:
-    - Liked Content → Popular posts, top domains, hashtags, links, emojis.
-    - Shared Content → Most shared posts, domains, links, media.
-    - Influential Content → Key influential accounts for the audience.
-- Each category includes:
-    - popularPost, topDomains, topEmojis, topHashtags, topLinks, topMedia, wordcloud
-- Required Parameter: audience_content_id (string)
-- Use case: Analyze the content most relevant to an audience.
+- **Response**:
+  - Full report details in JSON format.
+  - If the report is still processing, returns a message indicating the pending status.
 
-**get-baselines**
-- Description: Retrieves available baseline audiences, optionally filtered by country.
-- Optional Parameter: country (string, ISO country code)
-- Use case: Determine the best reference audience for comparisons.
+---
 
-**get-categories**
-- Description: Retrieves the list of available affinity categories for filtering influencer comparisons.
-- Parameters: (None)
-- Use case: Use categories to refine influencer analysis.
+### 📌 `get-audience-insights`
+**Description**: Retrieves **aggregated insights** for a given **audience**, including:
+  - **Demographics**: Gender, age, country.
+  - **Behavioral traits**: Active hours, platform usage.
+  - **Psychographics**: Personality traits, interests.
+  - **Socioeconomic factors**: Income, education status.
+
+- **Parameters**:
+  - `audience_insights_id` _(string)_: The ID of the audience insights.
+  - `insights` _(array of strings, optional)_: List of specific insight names to filter.
+
+- **Response**:
+  - Insights formatted as a structured text list.
+
+---
+
+### 📌 `get-baselines`
+**Description**: Retrieves available **baseline audiences**, optionally filtered by **country**.
+
+- **Parameters**:
+  - `country` _(string, optional)_: ISO country code to filter by.
+
+- **Response**:
+  - List of baseline audiences in JSON format.
+
+---
+
+### 📌 `get-categories`
+**Description**: Retrieves the list of **available affinity categories** that can be used in influencer comparisons.
+
+- **Parameters**: _None_
+- **Response**:
+  - List of categories in JSON format.
+
+---
+
+### 📌 `compare-audience-influencers`
+**Description**: Compares **influencers** of a given audience with a **baseline audience**. The baseline is determined as follows:
+  - If a **single country** represents more than 50% of the audience, that country is used as the baseline.
+  - Otherwise, the **global baseline** is used.
+  - If a **specific segment** is selected, the full audience is used as the baseline.
+
+Each influencer comparison includes:
+  - **Affinity (%)** – How well the influencer aligns with the audience.
+  - **Baseline Affinity (%)** – The influencer’s affinity within the baseline audience.
+  - **Uniqueness Score** – How distinct the influencer is compared to the baseline.
+
+- **Parameters**:
+  - `audience_influencers_id` _(string)_: ID of the audience influencers.
+  - `baseline_audience_influencers_id` _(string)_: ID of the baseline audience influencers.
+  - `cursor` _(number, optional)_: Pagination cursor.
+  - `count` _(number, optional)_: Number of items per page (default: 200).
+  - `bio_keyword` _(string, optional)_: Filter influencers by **bio keyword**.
+  - `entity_type` _(enum: `person` | `brand`, optional)_: Filter by entity type.
+  - `followers_min` _(number, optional)_: Minimum number of followers.
+  - `followers_max` _(number, optional)_: Maximum number of followers.
+  - `categories` _(array of strings, optional)_: Filter influencers by **categories**.
+  - `countries` _(array of strings, optional)_: Filter influencers by **country ISO codes**.
+
+- **Response**:
+  - List of influencers with **affinity scores, baseline comparison, and uniqueness scores** in JSON format.
+
+---
+
+### 📌 `get-audience-content`
+**Description**: Retrieves **audience content engagement details**, including:
+  - **Liked Content**: Most popular posts, domains, emojis, hashtags, links, media, and a word cloud.
+  - **Shared Content**: Most shared content categorized similarly.
+  - **Influential Content**: Content from influential accounts.
+
+Each category contains:
+  - `popularPost`: Most engaged posts.
+  - `topDomains`: Most mentioned domains.
+  - `topEmojis`: Most used emojis.
+  - `topHashtags`: Most used hashtags.
+  - `topLinks`: Most shared links.
+  - `topMedia`: Shared media.
+  - `wordcloud`: Most frequently used words.
+
+- **Parameters**:
+  - `audience_content_id` _(string)_: The ID of the audience content.
+
+- **Response**:
+  - Content engagement data in JSON format.
 
 ## 💡 Predefined Prompts
 
