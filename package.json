@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "bin": {
-    "weather": "./build/index.js"
+    "audiense-insights": "./build/index.js"
   },
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\""
@@ -26,5 +26,8 @@
     "@types/base-64": "^1.0.2",
     "@types/node": "^22.12.0",
     "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
