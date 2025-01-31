@@ -1,0 +1,30 @@
+{
+  "name": "mcp-audiense-insights",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "weather": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\""
+  },
+  "files": [
+    "build"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "APACHE 2.0",
+  "description": "",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.1",
+    "base-64": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "node-fetch": "^3.3.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/base-64": "^1.0.2",
+    "@types/node": "^22.12.0",
+    "typescript": "^5.7.3"
+  }
+}
