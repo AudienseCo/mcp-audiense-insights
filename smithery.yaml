@@ -1,0 +1,24 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - audienseClientId
+      - audienseClientSecret
+    properties:
+      audienseClientId:
+        type: string
+        description: Client ID for the Audiense API.
+      audienseClientSecret:
+        type: string
+        description: Client Secret for the Audiense API.
+      twitterBearerToken:
+        type: string
+        description: Bearer Token for the Twitter API (optional).
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'node', args: ['build/index.js'], env: { AUDIENSE_CLIENT_ID: config.audienseClientId, AUDIENSE_CLIENT_SECRET: config.audienseClientSecret, TWITTER_BEARER_TOKEN: config.twitterBearerToken || '' } })

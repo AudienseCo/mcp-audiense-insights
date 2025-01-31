@@ -1,4 +1,5 @@
 # 🏆 Audiense Insights MCP Server
+[![smithery badge](https://smithery.ai/badge/@AudienseCo/mcp-audiense-insights)](https://smithery.ai/server/@AudienseCo/mcp-audiense-insights)
 
 This server, based on the [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol), allows **Claude** or any other MCP-compatible client to interact with your [Audiense Insights](https://www.audiense.com/) account. It extracts **marketing insights and audience analysis** from Audiense reports, covering **demographic, cultural, influencer, and content engagement analysis**.
 
