@@ -21,4 +21,4 @@ startCommand:
   commandFunction:
     # A function that produces the CLI command to start the MCP on stdio.
     |-
-    (config) => ({ command: 'node', args: ['build/index.js'], env: { AUDIENSE_CLIENT_ID: config.audienseClientId, AUDIENSE_CLIENT_SECRET: config.audienseClientSecret, TWITTER_BEARER_TOKEN: config.twitterBearerToken || '' } })
+    (config) => ({ command: 'node', args: ['node build/index.js'], env: { AUDIENSE_CLIENT_ID: config.audienseClientId, AUDIENSE_CLIENT_SECRET: config.audienseClientSecret, TWITTER_BEARER_TOKEN: config.twitterBearerToken || '' } })
