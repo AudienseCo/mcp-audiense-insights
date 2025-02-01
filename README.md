@@ -9,12 +9,20 @@ This server, based on the [Model Context Protocol (MCP)](https://github.com/mode
 
 Before using this server, ensure you have:
 
-- **Node.js** (v16 or higher)
+- **Node.js** (v18 or higher)
 - **Claude Desktop App**
 - **Audiense Insights Account** with API credentials
 - **X/Twitter API Bearer Token** _(optional, for enriched influencer data)_
 
 ---
+
+## Installing via Smithery
+
+To install Audiense Insights Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@AudienseCo/mcp-audiense-insights):
+
+```bash
+npx -y @smithery/cli@latest install @AudienseCo/mcp-audiense-insights --client claude
+```
 
 ## ⚙️ Configuring Claude Desktop
 

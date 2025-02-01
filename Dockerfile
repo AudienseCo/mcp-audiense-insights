@@ -27,6 +27,7 @@ WORKDIR /app
 # Copy the built code and node_modules from the builder stage
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
 # Environment variables (should be replaced with actual credentials in production)
 ENV AUDIENSE_CLIENT_ID=your_client_id_here
