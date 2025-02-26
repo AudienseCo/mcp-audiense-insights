@@ -171,6 +171,24 @@ Each category contains:
 - **Response**:
   - Content engagement data in JSON format.
 
+---
+
+### 📌 `report-summary`
+**Description**: Generates a **comprehensive summary** of an Audiense report, including:
+  - Report metadata (title, segmentation type)
+  - Full audience size
+  - Detailed segment information
+  - **Top insights** for each segment (bio keywords, demographics, interests)
+  - **Top influencers** for each segment with comparison metrics
+
+- **Parameters**:
+  - `report_id` _(string)_: The ID of the intelligence report to summarize.
+
+- **Response**:
+  - Complete report summary in JSON format with structured data for each segment
+  - For pending reports: Status message indicating the report is still processing
+  - For reports without segments: Message indicating there are no segments to analyze
+
 ## 💡 Predefined Prompts
 
 This server includes a preconfigured prompt called `audiense-demo`, which helps analyze Audiense reports interactively.

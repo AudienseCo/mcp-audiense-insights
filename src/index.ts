@@ -5,6 +5,7 @@ import { getIntelligenceReports, getReportInfo, getAudienceInsights, compareAudi
 import { BASELINES } from "./baselines.js";
 import { CATEGORIES } from "./categories.js";
 import { DEMO_PROMPT, DEMO_PROMPT2 } from "./promts.js";
+import { generateReportSummary } from "./reportSummary.js";
 
 // MCP Server instance
 const server = new McpServer({
@@ -327,6 +328,51 @@ server.prompt(
         }
       }]
     })
+);
+
+/**
+ * MCP Tool: Generates a comprehensive summary of an Audiense report
+ */
+server.tool(
+    "report-summary",
+    "Generates a comprehensive summary of an Audiense report, including segment details, top insights, and influencers.",
+    {
+        report_id: z.string().describe("The ID of the intelligence report to summarize."),
+    },
+    async ({ report_id }) => {
+        const data = await generateReportSummary(report_id);
+
+        if (!data) {
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: `Failed to generate summary for report ID: ${report_id}.`,
+                    },
+                ],
+            };
+        }
+
+        if (data.message) {
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: data.message,
+                    },
+                ],
+            };
+        }
+
+        return {
+            content: [
+                {
+                    type: "text",
+                    text: JSON.stringify(data, null, 2)
+                }
+            ]
+        };
+    }
 );
 
 /**
