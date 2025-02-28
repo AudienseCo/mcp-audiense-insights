@@ -191,7 +191,10 @@ Each category contains:
 
 ## 💡 Predefined Prompts
 
-This server includes a preconfigured prompt called `audiense-demo`, which helps analyze Audiense reports interactively.
+This server includes a preconfigured prompts
+- `audiense-demo`: Helps analyze Audiense reports interactively.
+- `segment-matching`: A prompt to match and compare audience segments across Audiense reports, identifying similarities, unique traits, and key insights based on demographics, interests, influencers, and engagement patterns.
+
 
 **Usage:**
 - Accepts a reportName argument to find the most relevant report.

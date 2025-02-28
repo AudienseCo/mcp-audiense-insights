@@ -64,7 +64,21 @@ async function getTopInfluencers(
             return null;
         }
 
-        return influencersData.influencers;
+        // Filter influencers to include only the specified fields
+        return influencersData.influencers.map(influencer => ({
+            id: influencer.id,
+            affinity: influencer.affinity,
+            baseline_affinity: influencer.baseline_affinity,
+            uniqueness: influencer.uniqueness,
+            followers_count: influencer.twitter?.public_metrics?.followers_count,
+            url: influencer.twitter?.url,
+            name: influencer.twitter?.name,
+            verified_type: influencer.twitter?.verified_type,
+            description: influencer.twitter?.description,
+            profile_image_url: influencer.twitter?.profile_image_url,
+            verified: influencer.twitter?.verified,
+            username: influencer.twitter?.username
+        }));
     } catch (error) {
         console.error(`Error fetching influencers for segment ${segmentId}:`, error);
         return null;

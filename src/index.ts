@@ -4,7 +4,7 @@ import { z } from "zod";
 import { getIntelligenceReports, getReportInfo, getAudienceInsights, compareAudienceInfluencers, getAudienceContent } from "./audienseClient.js";
 import { BASELINES } from "./baselines.js";
 import { CATEGORIES } from "./categories.js";
-import { DEMO_PROMPT, DEMO_PROMPT2 } from "./promts.js";
+import { DEMO_PROMPT, DEMO_PROMPT2, SEGMENT_MATCHING_PROMPT } from "./promts.js";
 import { generateReportSummary } from "./reportSummary.js";
 
 // MCP Server instance
@@ -325,6 +325,26 @@ server.prompt(
         content: {
           type: "text",
           text: DEMO_PROMPT2.replaceAll('{reportName}', reportName)
+        }
+      }]
+    })
+);
+
+server.prompt(
+    "segment-matching",
+    "A prompt to match and compare audience segments across Audiense reports, identifying similarities, unique traits, and key insights based on demographics, interests, influencers, and engagement patterns.",
+    { 
+        brand1: z.string().describe("The name or ID of the Audiense Insights report for the first brand to analyze."),
+        brand2: z.string().describe("The name or ID of the Audiense Insights report for the second brand to analyze.")
+    },
+    ({ brand1, brand2 }) => ({
+      messages: [{
+        role: "user",
+        content: {
+          type: "text",
+          text: SEGMENT_MATCHING_PROMPT
+            .replaceAll('{brand1}', brand1)
+            .replaceAll('{brand2}', brand2)
         }
       }]
     })
