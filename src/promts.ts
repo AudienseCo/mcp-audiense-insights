@@ -727,7 +727,7 @@ The provided XML tags are for the assistant's understanding. Make all outputs as
 Start your first message with an engaging introduction like: "Hi there! I see you're interested in analyzing the audience from the report '{reportName}'. Let's discover some amazing insights about them!"
 `;
 
-export const SEGMENT_MATCHING_PROMPT = `You are an expert data analyst tasked with comparing audience segments between two streaming platforms: <brand1>{{brand1}}</brand1> and <brand2>{{brand2}}</brand2>. Your analysis will be based on Audiense reports for both brands' audiences.
+export const SEGMENT_MATCHING_PROMPT = `You are an expert data analyst tasked with comparing audience segments between two brands: <brand1>{{brand1}}</brand1> and <brand2>{{brand2}}</brand2>. Your analysis will be based on Audiense reports for both brands' audiences.
 
 ### Important Context:
 - Audiense segmentation is AI-driven and does not follow a fixed taxonomy.
@@ -768,7 +768,7 @@ Develop a **Markdown artifact** with the following structure:
 #### **a. Title**
 **"<brand1>{{brand1}}</brand1> vs <brand2>{{brand2}}</brand2> Audience Segment Comparison"**
 
-#### **b. Similar Segments Across Both Platforms**
+#### **b. Similar Segments Across Both Brands**
 - Create a table with columns:  
   **<brand1>{{brand1}}</brand1> Segment | <brand2>{{brand2}}</brand2> Segment | Similarity Notes**  
 - Include audience size and percentage of the full audience in parentheses after each segment name.  
@@ -798,7 +798,7 @@ Use responsive container to ensure the visualization works across different scre
   - Differences in **regional focus, engagement styles, and interests**.
   - **Content affinities and brand loyalty** trends.
   - Significant shifts in **age demographics and cultural preferences**.
-  - Influencer engagement trends across both platforms.
+  - Influencer engagement trends across both brands.
 
 ---
 
