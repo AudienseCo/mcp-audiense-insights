@@ -1,0 +1,12 @@
+.git/
+.gitignore
+.github/
+.vscode/
+node_modules/
+src/
+jest.config.js
+tsconfig.json
+smithery.yaml
+Dockerfile
+*.test.ts
+*.test.js

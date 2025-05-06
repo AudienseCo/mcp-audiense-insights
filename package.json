@@ -6,19 +6,35 @@
     "audiense-insights": "./build/index.js"
   },
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
-    "prepare": "npm run build",
-    "test": "jest"
+    "build": "tsc && chmod +x build/index.js",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "build",
-    "src",
-    "tsconfig.json"
+    "README.md",
+    "LICENSE.md"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "APACHE 2.0",
-  "description": "",
+  "keywords": [
+    "audiense",
+    "mcp",
+    "claude",
+    "ai",
+    "audience-analysis",
+    "marketing-insights",
+    "social-media-analytics"
+  ],
+  "author": "Audiense",
+  "license": "Apache-2.0",
+  "description": "MCP server for Claude that provides marketing insights and audience analysis from Audiense reports, covering demographic, cultural, influencer, and content engagement analysis",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AudienseCo/mcp-audiense-insights.git"
+  },
+  "homepage": "https://github.com/AudienseCo/mcp-audiense-insights#readme",
+  "bugs": {
+    "url": "https://github.com/AudienseCo/mcp-audiense-insights/issues"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.4.1",
     "base-64": "^1.0.0",

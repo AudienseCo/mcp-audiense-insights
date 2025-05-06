@@ -1,11 +1,6 @@
 # 🏆 Audiense Insights MCP Server
-[![smithery badge](https://smithery.ai/badge/@AudienseCo/mcp-audiense-insights)](https://smithery.ai/server/@AudienseCo/mcp-audiense-insights)
 
 This server, based on the [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol), allows **Claude** or any other MCP-compatible client to interact with your [Audiense Insights](https://www.audiense.com/) account. It extracts **marketing insights and audience analysis** from Audiense reports, covering **demographic, cultural, influencer, and content engagement analysis**.
-
-<a href="https://glama.ai/mcp/servers/xz11vmv38c">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/xz11vmv38c/badge" /></a>
-
 ---
 
 ## 🚀 Prerequisites
@@ -18,14 +13,6 @@ Before using this server, ensure you have:
 - **X/Twitter API Bearer Token** _(optional, for enriched influencer data)_
 
 ---
-
-## Installing via Smithery
-
-To install Audiense Insights Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@AudienseCo/mcp-audiense-insights):
-
-```bash
-npx -y @smithery/cli@latest install @AudienseCo/mcp-audiense-insights --client claude
-```
 
 ## ⚙️ Configuring Claude Desktop
 
@@ -45,9 +32,10 @@ npx -y @smithery/cli@latest install @AudienseCo/mcp-audiense-insights --client c
    ```json
    "mcpServers": {
      "audiense-insights": {
-       "command": "/opt/homebrew/bin/node",
+       "command": "npx",
        "args": [
-         "/ABSOLUTE/PATH/TO/YOUR/build/index.js"
+        "-y",
+         "@AudienseCo/mcp-audiense-insights"
        ],
        "env": {
          "AUDIENSE_CLIENT_ID": "your_client_id_here",
