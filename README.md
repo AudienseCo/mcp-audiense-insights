@@ -35,7 +35,7 @@ Before using this server, ensure you have:
        "command": "npx",
        "args": [
         "-y",
-         "@AudienseCo/mcp-audiense-insights"
+         "mcp-audiense-insights"
        ],
        "env": {
          "AUDIENSE_CLIENT_ID": "your_client_id_here",
