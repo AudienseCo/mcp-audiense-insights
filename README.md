@@ -1,7 +1,16 @@
-# 🏆 Audiense Insights MCP Server
+## ⚠️ **Deprecated**
+
+## 🚫 This repository is no longer maintained.
+
+>The Audiense Insights MCP has been migrated to a remote model. For more information on how to use the new remote MCP, please reach us at [support@audiense.com](mailto:support@audiense.com).
+
+---
+---
+
+## 🏆 Audiense Insights MCP Server
 
 This server, based on the [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol), allows **Claude** or any other MCP-compatible client to interact with your [Audiense Insights](https://www.audiense.com/) account. It extracts **marketing insights and audience analysis** from Audiense reports, covering **demographic, cultural, influencer, and content engagement analysis**.
----
+
 
 ## 🚀 Prerequisites
 
